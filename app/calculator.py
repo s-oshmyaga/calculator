@@ -27,6 +27,7 @@ def calculator(value):
     elif value == '=':
         string = display_text.get()
         result = logics.solution(string)
+        result = f'{result:,}'.replace(',', ' ')
         display_text.delete('0', END)
         display_text.insert('0', result)
 
