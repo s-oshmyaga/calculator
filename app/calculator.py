@@ -3,11 +3,13 @@ from app import logics
 
 
 def calculator(value):
-    if value.isdigit() or value in ('+', '-', '%', u'\u03C0', u'\u2236', u'\u2217',
+    if value.isdigit() or value in ('+', '-', u'\u03C0', u'\u2236', u'\u2217',
                                     '(', ')', '!'):
         display_text.insert(END, value)
     elif value == 'C':
         display_text.delete('0', END)
+    elif value == u'\u2190':
+        display_text.delete(len(display_text.get())-1)
     elif value == 'ln':
         last_sign = display_text.get()
         if (last_sign and last_sign[-1].isdigit()) or last_sign == ')':
@@ -38,7 +40,7 @@ for i in range(2):
     window.rowconfigure(i, weight=1)
 
 
-buttons_list = ['=', 'C', '%', 'ln', '^', '!', u'\u03C0', '(', ')', u'\u2236', u'\u2217', '+', '-',
+buttons_list = ['=', 'C', u'\u2190', 'ln', '^', '!', u'\u03C0', '(', ')', u'\u2236', u'\u2217', '+', '-',
                 '.', u'\u221a', '9', '8', '7', '6', '5', '4', '3', '2', '1', '0']
 buttons_list = iter(buttons_list)
 
